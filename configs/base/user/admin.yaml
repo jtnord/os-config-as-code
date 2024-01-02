@@ -31,7 +31,7 @@ properties:
       settings:
         Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
         ValueName: "ShowSuperHidden"
-        ValueType: Binary
+        ValueType: DWord
         ValueData: "1"
         Ensure: present
         Force: true
