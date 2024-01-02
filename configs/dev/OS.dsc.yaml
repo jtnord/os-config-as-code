@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+  - resource: Microsoft.Windows.Developer/OsVersion
+    directives:
+      description: Verify min OS version requirement
+      allowPrerelease: true
+    settings:
+      MinVersion: '10.0.22000'
+  resources:
+  - resource: PSDscResources/WindowsOptionalFeature
+    directives:
+      description: Enable Hyper-V Feature
+    settings :
+      Name : Microsoft-Hyper-V
+      Ensure: Present
+      NoWindowsUpdateCheck: true
+      LogPath: "c:\log.txt"
+  - resource: PSDscResources/WindowsOptionalFeature
+    directives:
+      description: Enable Virtual Machine platform feature
+      # https://pureinfotech.com/hyperv-virtual-machine-platform-windows-hypervisor-platform/
+    settings:
+      Name : VirtualMachinePlatform
+      Ensure: Present
+  - resource: PSDscResources/WindowsOptionalFeature
+    directives:
+      description: Enable WSL feature
+    settings:
+      Name : Microsoft-Windows-Subsystem-Linux
+      Ensure: Present
+  - resource: PSDscResources/WindowsOptionalFeature
+    directives:
+      description: Enable Windows Containers feature
+    settings:
+      Name : Containers
+      Ensure: Present
+  - resource: PSDscResources/WindowsOptionalFeature
+    directives:
+      description: Enable Windows Sandbox feature
+    settings:
+      Name : Containers-DisposableClientVM
+      Ensure: Present

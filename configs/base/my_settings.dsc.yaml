@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+  - resource: Microsoft.Windows.Developer/OsVersion
+    directives:
+      description: Verify min OS version requirement
+      allowPrerelease: true
+    settings:
+      MinVersion: '10.0.22000'
+# find and set all tweaks I do here.
+# registry keys can be set by e.g. https://github.com/microsoft/winget-cli/discussions/3408#discussioncomment-6387258
+# also install any apps.
+#  resources:
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Hyper-V Feature
+#    settings :
+#      Name : Microsoft-Hyper-V
+#      Ensure: Present
+#      NoWindowsUpdateCheck: true
+#      LogPath: "c:\log.txt"
+# apps
+
+# clink
+# then my config files for clink...
+# cygwin?
+# yubikey
+# gpg
+# configure gpg key startup files...
+# terminal?
+# chrome
+# spotify
+
+# settings

@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+  - resource: Microsoft.Windows.Developer/OsVersion
+    directives:
+      description: Verify min OS version requirement
+      allowPrerelease: true
+    settings:
+      MinVersion: '10.0.22000'
+  resources:
+    - resource: PSDscResources/Registry
+      directives:
+        description: Remove Wallpaper
+      settings:
+        Key: "HKEY_CURRENT_USER\Control Panel\Desktop"
+        ValueName: "WallPaper"
+        ValueData: ""
+        Ensure: present
+    - resource: PSDscResources/Registry
+      directives:
+        description: Set Background Colour
+      settings:
+        Key: "HKEY_CURRENT_USER\Control Panel\Colors"
+        ValueName: "Background"
+        ValueData: "255 140 0"
+        Ensure: present
+
+
+# alas this is not a standalone installer.
+#  - resource: Microsoft.WinGet.DSC/WinGetPackage
+#    id: jtord.uk-extended-keyboard-layout
+#    directives:
+#      description: Install UK Extended keyboard layout
+#      allowPrerelease: false
+#    settings:
+#      # local manifest.
+#      id: jtord.uk-extended-keyboard-layout
+#      source: todo create local manifest to install https://github.com/jtnord?tab=repositories&q=key&type=&language=&sort=
+
+#  resources:
+
+# find and set all tweaks I do here.
+# registry keys can be set by e.g. https://github.com/microsoft/winget-cli/discussions/3408#discussioncomment-6387258
+
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Hyper-V Feature
+#    settings :
+#      Name : Microsoft-Hyper-V
+#      Ensure: Present
+#      NoWindowsUpdateCheck: true
+#      LogPath: "c:\log.txt"
+
+# Windows features
+#containers
+# hyper-v
+#print to pdf
+# virtual machine platform
+# windows sandboc
+# windows subsystem for linux
+
+## optional features
+
+# environment vars
+# - resouce
+#   directives:
+#.. https://github.com/k-takai/Demo/blob/c80143bc255e04f0f3cc4fd509687ff0f381158e/20230617-SCUGJ35/configuration.dsc.yaml#L11
+# apps
+# dev stuff 
