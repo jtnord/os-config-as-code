@@ -49,3 +49,13 @@ properties:
         ValueData: "0"
         Ensure: present
         Force: true
+    - resource: PSDscResources/Registry
+      directives:
+        description: "[explorer] Show full path in title"
+      settings:
+        Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CabinetState"
+        ValueName: "FullPath"
+        ValueType: Binary
+        ValueData: "1"
+        Ensure: present
+        Force: true
