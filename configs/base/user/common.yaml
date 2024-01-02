@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+    - resource: Microsoft.Windows.Developer/OsVersion
+      directives:
+        description: Verify min OS version requirement
+        allowPrerelease: true
+      settings:
+        MinVersion: '10.0.22000'
+  resources:
+    - resource: PSDscResources/Registry
+      directives:
+        description: "[explorer] Show file extensions"
+      settings:
+        Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+        ValueName: "HideFileExt"
+        ValueType: Binary
+        ValueData: "0"
+        Ensure: present
+        Force: true
+    - resource: PSDscResources/Registry
+      directives:
+        description: "[explorer] Show hidden files"
+      settings:
+        Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+        ValueName: "Hidden"
+        ValueType: Binary
+        ValueData: "1"
+        Ensure: present
+        Force: true
+    - resource: PSDscResources/Registry
+      directives:
+        description: "[explorer] Show empty drives files"
+      settings:
+        Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+        ValueName: "HideDrivesWithNoMedia"
+        ValueType: Binary
+        ValueData: "0"
+        Ensure: present
+        Force: true
+    - resource: PSDscResources/Registry
+      directives:
+        description: "[explorer] Disable sharing wizard"
+      settings:
+        Key: "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+        ValueName: "SharingWizardOn"
+        ValueType: Binary
+        ValueData: "0"
+        Ensure: present
+        Force: true

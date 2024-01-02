@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+  - resource: Microsoft.Windows.Developer/OsVersion
+    directives:
+      description: Verify min OS version requirement
+      allowPrerelease: true
+    settings:
+      MinVersion: '10.0.22000'
+
