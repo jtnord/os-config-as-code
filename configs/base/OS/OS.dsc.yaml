@@ -18,7 +18,7 @@ properties:
     id: 7zip
     directives:
       description: Install 7ZIP
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: 7zip.7zip
       source: winget
@@ -26,7 +26,7 @@ properties:
     id: chrome
     directives:
       description: Install Chrome
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Google.Chrome
       source: winget

@@ -13,7 +13,7 @@ properties:
     id: slack
     directives:
       description: Install Slack
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: slack
       source: msstore
@@ -21,7 +21,7 @@ properties:
     id: outlook
     directives:
       description: Install Outlook for Windows
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: slack
       source: msstore

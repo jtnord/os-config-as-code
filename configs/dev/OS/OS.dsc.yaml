@@ -46,7 +46,7 @@ properties:
     id: sysinternals
     directives:
       description: Install MSFT Sysinternals Suite
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: 9P7KNL5RWT25
       source: msstore
@@ -54,7 +54,7 @@ properties:
     id: git
     directives:
       description: Install git
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Git.Git
       source: winget
@@ -62,7 +62,7 @@ properties:
     id: hub
     directives:
       description: Install git
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: GitHub.hub
       source: winget
@@ -70,7 +70,7 @@ properties:
     id: github
     directives:
       description: Install github
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: GitHub.cli
       source: winget
@@ -80,7 +80,7 @@ properties:
     id: gpg
     directives:
       description: Install GPG
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: GnuPG.GnuPG
       source: winget
@@ -88,7 +88,7 @@ properties:
     id: yubicoAuth
     directives:
       description: Install Yubico Authenticator
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Yubico.Authenticator
       source: winget
@@ -96,7 +96,7 @@ properties:
     id: yubicoMgr
     directives:
       description: Install Yubico Manager
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Yubico.YubikeyManager
       source: winget
@@ -104,7 +104,7 @@ properties:
     id: ubuntu
     directives:
       description: Install Ubuntu WSL
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Canonical.Ubuntu.2204
       source: winget
@@ -114,7 +114,7 @@ properties:
     id: docker
     directives:
       description: Install Docker DockerDesktop
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Docker.DockerDesktop
       source: winget

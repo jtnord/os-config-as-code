@@ -13,7 +13,7 @@ properties:
     id: git
     directives:
       description: Install Git for windows
-      allowPrerelease: false
+      allowPrerelease: true
     settings:
       id: Git.Git
       source: winget
