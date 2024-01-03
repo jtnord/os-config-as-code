@@ -106,8 +106,8 @@ properties:
       description: Install Ubuntu WSL
       allowPrerelease: false
     settings:
-      id: "9PDXGNCFSCZV"
-      source: msstore
+      id: Canonical.Ubuntu.2204
+      source: winget
     dependsOn:
       - "wsl"
   - resource: Microsoft.WinGet.DSC/WinGetPackage
