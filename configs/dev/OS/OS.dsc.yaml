@@ -43,13 +43,13 @@ properties:
       Name : Containers-DisposableClientVM
       Ensure: Present
   - resource: Microsoft.WinGet.DSC/WinGetPackage
-    id: sysinternals
+    id: processExplorer
     directives:
-      description: Install MSFT Sysinternals Suite
+      description: Install MSFT Sysinternals process explorer
       allowPrerelease: true
     settings:
-      id: 9P7KNL5RWT25
-      source: msstore
+      id:  Microsoft.Sysinternals.ProcessExplorer
+      source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: git
     directives:
