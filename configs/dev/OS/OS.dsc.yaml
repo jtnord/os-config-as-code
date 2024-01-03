@@ -24,6 +24,7 @@ properties:
       Name : VirtualMachinePlatform
       Ensure: Present
   - resource: PSDscResources/WindowsOptionalFeature
+    id: wsl
     directives:
       description: Enable WSL feature
     settings:
@@ -44,11 +45,84 @@ properties:
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: sysinternals
     directives:
-      description: Install MSFT sysinternals
+      description: Install MSFT Sysinternals Suite
       allowPrerelease: false
     settings:
       id: 9P7KNL5RWT25
-      source: msstore      
+      source: msstore
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: git
+    directives:
+      description: Install git
+      allowPrerelease: false
+    settings:
+      id: Git.Git
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: hub
+    directives:
+      description: Install git
+      allowPrerelease: false
+    settings:
+      id: GitHub.hub
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: github
+    directives:
+      description: Install github
+      allowPrerelease: false
+    settings:
+      id: GitHub.cli
+      source: winget
+    dependsOn:
+      - "git"
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: gpg
+    directives:
+      description: Install GPG
+      allowPrerelease: false
+    settings:
+      id: GnuPG.GnuPG
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: yubicoAuth
+    directives:
+      description: Install Yubico Authenticator
+      allowPrerelease: false
+    settings:
+      id: Yubico.Authenticator
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: yubicoMgr
+    directives:
+      description: Install Yubico Manager
+      allowPrerelease: false
+    settings:
+      id: Yubico.YubikeyManager
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: ubuntu
+    directives:
+      description: Install Ubuntu WSL
+      allowPrerelease: false
+    settings:
+      id: "9PDXGNCFSCZV"
+      source: msstore
+    dependsOn:
+      - "wsl"
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: docker
+    directives:
+      description: Install Docker DockerDesktop
+      allowPrerelease: false
+    settings:
+      id: Docker.DockerDesktop
+      source: winget
+    dependsOn:
+      - "ubuntu"
+  # TODO create c:\java
+  # TODO install openjdk11,17,21 maven 3.9
+#      
     # XXX there is no option to specify an install location.
 #  - resource: PSDscResources/Script
 #    id: sysinternals-tool-folder

@@ -8,4 +8,27 @@ properties:
       allowPrerelease: true
     settings:
       MinVersion: '10.0.22000'
+  resources:
+# TODO the installer is not a standalone one :(
+#    - resource: PSDscResources/MsiPackage
+#      Path: https://github.com/jtnord/uk-extended-keyboard-layout/releases/download/v1.0/uk_extended_keyboard_dead_keys.msi
+#      ProductId: {DEADBEEF-80C6-41E6-A1B9-8BDB8A05027F}
+  # apps for all users and machines
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: 7zip
+    directives:
+      description: Install 7ZIP
+      allowPrerelease: false
+    settings:
+      id: 7zip.7zip
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: chrome
+    directives:
+      description: Install Chrome
+      allowPrerelease: false
+    settings:
+      id: Google.Chrome
+      source: winget
+
 

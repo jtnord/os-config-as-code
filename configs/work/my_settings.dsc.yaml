@@ -25,38 +25,6 @@ properties:
     settings:
       id: slack
       source: msstore
-      # TODO need to confirue the options.. (symlink, checkout-as-is... run from cmd prompt etc..)
-#  - resource: git settings
-    # copy across my git config and the ssh related stuf...
-  #depends on git.
-
-# find and set all tweaks I do here.
-# registry keys can be set by e.g. https://github.com/microsoft/winget-cli/discussions/3408#discussioncomment-6387258
-# also install any apps.
-#  resources:
-#  - resource: PSDscResources/WindowsOptionalFeature
-#    directives:
-#      description: Enable Hyper-V Feature
-#    settings :
-#      Name : Microsoft-Hyper-V
-#      Ensure: Present
-#      NoWindowsUpdateCheck: true
-#      LogPath: "c:\log.txt"
-
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
-      id: vsPackage
-      directives:
-        description: Install Visual Studio 2022 (any edition is OK)
-        allowPrerelease: true
-      settings:
-        id: Microsoft.VisualStudio.2022.Community
-        source: winget
-
-# environment vars
-# - resouce
-#   directives:
-#.. https://github.com/k-takai/Demo/blob/c80143bc255e04f0f3cc4fd509687ff0f381158e/20230617-SCUGJ35/configuration.dsc.yaml#L11
-# apps
-# ubuntu
-# 
-# dev stuff 
+  # TODO openVPN
+  # TODO jumpcloud
+  # TODO envs
