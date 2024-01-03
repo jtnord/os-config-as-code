@@ -15,12 +15,12 @@ properties:
 #      ProductId: {DEADBEEF-80C6-41E6-A1B9-8BDB8A05027F}
   # apps for all users and machines
   - resource: Microsoft.WinGet.DSC/WinGetPackage
-    id: 7zip
+    id: "7zip"
     directives:
       description: Install 7ZIP
       allowPrerelease: true
     settings:
-      id: 7zip.7zip
+      id: "7zip.7zip"
       source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: chrome
