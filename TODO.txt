@@ -1,0 +1,2 @@
+# set system default regional settings
+# uk dead keyboard install
