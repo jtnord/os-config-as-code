@@ -111,8 +111,9 @@ properties:
     settings:
       id: Canonical.Ubuntu.2204
       source: winget
-    dependsOn:
-      - "wsl"
+# https://github.com/microsoft/winget-cli/issues/3348
+#    dependsOn:
+#      - "wsl"
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: docker
     directives:
