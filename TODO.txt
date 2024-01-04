@@ -1,2 +1,5 @@
-# set system default regional settings
+# set system default regional settings (https://www.powershellgallery.com/packages/ComputerManagementDsc/9.0.0)
 # uk dead keyboard install
+
+# Git configuration (and gpg agent) / startup files.
+# OpenVPN config

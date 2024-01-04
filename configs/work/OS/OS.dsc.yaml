@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  configurationVersion: 0.2.0
+  assertions:
+  - resource: Microsoft.Windows.Developer/OsVersion
+    directives:
+      description: Verify min OS version requirement
+      allowPrerelease: true
+    settings:
+      MinVersion: '10.0.22000'
+  resources:
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: OpenVPN
+    directives:
+      description: Install OpenVPN
+      allowPrerelease: true
+    settings:
+      id:  OpenVPNTechnologies.OpenVPN
+      source: winget
