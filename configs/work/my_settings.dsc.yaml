@@ -15,15 +15,15 @@ properties:
       description: Install Slack
       allowPrerelease: true
     settings:
-      id: slack
-      source: msstore
+      id: SlackTechnologies.Slack
+      source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: outlook
     directives:
       description: Install Outlook for Windows
       allowPrerelease: true
     settings:
-      id: slack
+      id: 9NRX63209R7B
       source: msstore
   # TODO openVPN
   # TODO jumpcloud

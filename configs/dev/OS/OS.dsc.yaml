@@ -9,39 +9,42 @@ properties:
     settings:
       MinVersion: '10.0.22000'
   resources:
-  - resource: PSDscResources/WindowsOptionalFeature
-    directives:
-      description: Enable Hyper-V Feature
-    settings :
-      Name : Microsoft-Hyper-V
-      Ensure: Present
-      NoWindowsUpdateCheck: true
-  - resource: PSDscResources/WindowsOptionalFeature
-    directives:
-      description: Enable Virtual Machine platform feature
-      # https://pureinfotech.com/hyperv-virtual-machine-platform-windows-hypervisor-platform/
-    settings:
-      Name : VirtualMachinePlatform
-      Ensure: Present
-  - resource: PSDscResources/WindowsOptionalFeature
-    id: wsl
-    directives:
-      description: Enable WSL feature
-    settings:
-      Name : Microsoft-Windows-Subsystem-Linux
-      Ensure: Present
-  - resource: PSDscResources/WindowsOptionalFeature
-    directives:
-      description: Enable Windows Containers feature
-    settings:
-      Name : Containers
-      Ensure: Present
-  - resource: PSDscResources/WindowsOptionalFeature
-    directives:
-      description: Enable Windows Sandbox feature
-    settings:
-      Name : Containers-DisposableClientVM
-      Ensure: Present
+  # https://github.com/microsoft/winget-cli/issues/3348
+  # for now..
+  # $features = @((" Microsoft-Hyper-V"),("VirtualMachinePlatform"),("Microsoft-Windows-Subsystem-Linux"),("Containers"),("Containers-DisposableClientVM"))
+  # Enable-WindowsOptionalFeatures -online -all $features
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Hyper-V Feature
+#    settings :
+#      Name : Microsoft-Hyper-V
+#      Ensure: Present
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Virtual Machine platform feature
+#      # https://pureinfotech.com/hyperv-virtual-machine-platform-windows-hypervisor-platform/
+#    settings:
+#      Name : VirtualMachinePlatform
+#      Ensure: Present
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    id: wsl
+#    directives:
+#      description: Enable WSL feature
+#    settings:
+#      Name : Microsoft-Windows-Subsystem-Linux
+#      Ensure: Present
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Windows Containers feature
+#    settings:
+#      Name : Containers
+#      Ensure: Present
+#  - resource: PSDscResources/WindowsOptionalFeature
+#    directives:
+#      description: Enable Windows Sandbox feature
+#    settings:
+#      Name : Containers-DisposableClientVM
+#      Ensure: Present
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: processExplorer
     directives:
@@ -61,7 +64,7 @@ properties:
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: hub
     directives:
-      description: Install git
+      description: Install hub
       allowPrerelease: true
     settings:
       id: GitHub.hub
