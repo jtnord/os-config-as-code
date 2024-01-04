@@ -9,6 +9,8 @@ properties:
       settings:
         MinVersion: '10.0.22000'
   resources:
+  # todo replace with Microsoft.Windows.Developer
+  # https://www.powershellgallery.com/packages/Microsoft.Windows.Developer/0.1.3-alpha/Content/Microsoft.Windows.Developer.psd1
     - resource: PSDscResources/Registry
       directives:
         description: "[explorer] Show file extensions"
