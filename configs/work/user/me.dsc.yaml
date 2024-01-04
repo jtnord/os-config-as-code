@@ -25,6 +25,13 @@ properties:
     settings:
       id: 9NRX63209R7B
       source: msstore
-  # TODO openVPN
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: OpenVPN
+    directives:
+      description: Install OpenVPN
+      allowPrerelease: true
+    settings:
+      id:  OpenVPNTechnologies.OpenVPN
+      source: winget
   # TODO jumpcloud
   # TODO envs

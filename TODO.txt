@@ -2,4 +2,6 @@
 # uk dead keyboard install
 
 # Git configuration (and gpg agent) / startup files.
-# OpenVPN config
+# OpenVPN 
+#   config 
+#   create "OpenVPN Administrators" group for local user
