@@ -21,15 +21,44 @@ properties:
 #      NoWindowsUpdateCheck: true
 #      LogPath: "c:\log.txt"
 # apps
-
-# clink
-# then my config files for clink...
+  resources:
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: spotify
+    directives:
+      description: Install spotify
+      allowPrerelease: true
+    settings:
+      id: Spotify.Spotify
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: clink
+    directives:
+      description: Install chrisant996/Clink
+      allowPrerelease: true
+    settings:
+      id: chrisant996.Clink
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: vscode
+    directives:
+      description: Install VS Code
+      allowPrerelease: true
+    settings:
+      id: Microsoft.VisualStudioCode
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: leafystructure
+    directives:
+      description: Install Leafy Structures theme
+      allowPrerelease: true
+    settings:
+      id: "9NZPM0HLNWZL"
+      source: msstore
+      
+# config files for clink...
 # cygwin?
-# yubikey
 # gpg
 # configure gpg key startup files...
-# terminal?
-# chrome
-# spotify
+# terminal config?
 
 # settings

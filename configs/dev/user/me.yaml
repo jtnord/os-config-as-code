@@ -17,10 +17,53 @@ properties:
     settings:
       id: Git.Git
       source: winget
-      # TODO need to confirue the options.. (symlink, checkout-as-is... run from cmd prompt etc..)
-#  - resource: git settings
-    # copy across my git config and the ssh related stuf...
-  #depends on git.
+      InstallMode: Interactive 
+      # ensue we choose sane defaults until the things are exposed (do not install a version of ssh that can not work with gpg-agent etc..)
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: github
+    directives:
+      description: Install github
+      allowPrerelease: true
+    settings:
+      id: GitHub.cli
+      source: winget
+    dependsOn:
+      - "git"
+  - resource: PSDscResources/Script
+    id: gitconfig
+    directives:
+      description: create git config
+      allowPrerelease: false
+      dependsOn:
+        - git
+    settings:
+      # script is idempotent - just run it
+      GetScript: |
+        return $false
+      TestScript:
+        return $false
+      SetScript: |
+        git config --global core.longpaths true
+        git config --global user.name "James Nord"
+        git config --global user.email jtnord@users.noreply.github.com
+        git config --global user.signingkey "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCckk+O2qlbG9Bn9Mw0Lz+2C1jdUQZDOq6XZHp53rdO/bi6NA+AO6wAqAY4MHrmc/pMKg5BJAxxJgXrGonxxqcbihsWWQIUftr6LU849XMvof9LUelGbg3PFemypGDhscD0FdOIudzTEX5A4XJ3M0Fc1c8t+R+xXigNEI3+JhS0PaFagA46wjG6/W2642H9qrjsmI+QdeFOge1G7iz1t7sw/pu9fkAMl8AYEuhC/AdCga6DoIVJW5kbDUW3nzuj7Bv2ZnL+x4vAZt3tvqCBjg1B/tdKb93U66ahy2ClmHMQk4b4LIqfWL/Z/juws+fAbjzl0PSRjuJttOFa1oGxze2eX0PkE0Om0Tg6ASG+AKeXJa09lOdmGRFdBG3pwQ3SEm4DCMa8F/9r/7p5merA5xZLIcZNBeUvDdAN5ZaXd9CxFGFc6LRGwxFmb4KqQXMQd/HbtFilohJo3y/vBuuxXYtzErq8pb7Nt3yqPf8XWi5HRFwuMpJjR0WBJOnERskJGEDqv+DbUUZyFu1zj1sEyjQDVWTlALvWwJK6IK4qRZyVm772e2zaDBaVaf9jyeJ0kU3Ro9ygGOJmnrnj0Vnc16Sn5dPvoLmfaJ079ZdfYgFuqJceZUe0U+NuDs84VnMuULjXqgHtqT13HpMvZ/t9kLCxbdoLQt6R67mnJfHNRQX/QQ== cardno:17_688_284"
+        git config --global commit.gpgsign true
+        git config --global gpg.format ssh
+        git config --global gpg.ssh.allowedsignersfile ${env:USERPROFILE}\.config\git\allowed_signers
+        git config --global url.https://github.com.insteadof git://github.com
+        # https://github.com/cli/cli/issues/8521
+        # gh auth setup-git
+        git config --global credential.https://github.com.helper "!'C:\Program Files\GitHub CLI\gh.exe' auth git-credential"
+        git config --global credential.https://gist.github.com.helper "!'C:\Program Files\GitHub CLI\gh.exe' auth git-credential"
+# https://github.com/microsoft/winget-pkgs/issues/132720
+#  - resource: Microsoft.WinGet.DSC/WinGetPackage
+#    id: cygwin
+#    directives:
+#      description: Install cygwin
+#      allowPrerelease: true
+#    settings:
+#      id:  Cygwin.Cygwin
+#      source: winget
 
 # find and set all tweaks I do here.
 # registry keys can be set by e.g. https://github.com/microsoft/winget-cli/discussions/3408#discussioncomment-6387258

@@ -23,7 +23,7 @@ properties:
       description: Install Outlook for Windows
       allowPrerelease: true
     settings:
-      id: 9NRX63209R7B
+      id: "9NRX63209R7B"
       source: msstore
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: OpenVPN
@@ -33,5 +33,104 @@ properties:
     settings:
       id:  OpenVPNTechnologies.OpenVPN
       source: winget
-  # TODO jumpcloud
-  # TODO envs
+# fails  as it needs System.Windows.Forms.dll
+#  - resource: DSCR_Shortcut/cShortcut
+#    id: gpgagentshortcut
+#    directives:
+#      description: GPG Startup shortcut
+#      allowPrerelease: false
+#    settings:
+#      Path: "${env:APPDATA}\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\GPG Agent.lnk"
+#      Target: "\"C:\\Program Files (x86)\\gnupg\\bin\\gpg-connect-agent.exe\" /bye"
+#      WorkingDirectory: "C:\\Program Files (x86)\\gnupg\\bin\\"
+  - resource: PSDscResources/Script
+    id: gpgagentconfig
+    directives:
+      description: create gpg agent config
+      allowPrerelease: true
+    settings:
+      # fixme to load content from file....
+      GetScript: |
+        return $false
+      TestScript:
+        return $false
+      SetScript: |
+        $source = '${WinGetConfigRoot}\files\gpg-agent.conf'
+        $dest = "${env:APPDATA}\\gnupg\\gpg-agent.conf"
+        Copy-Item -Path $source -Dest $dest
+  - resource: PSDscResources/Script
+    id: gpgstartup
+    directives:
+      description: create gpg agent startup shortcut
+      allowPrerelease: false
+    dependsOn: 
+      - gpgagentconfig
+    settings:
+      # script is idempotent - just run it
+      GetScript: |
+        return $false
+      TestScript:
+        return $false
+      SetScript: |
+        $WshShell = New-Object -comObject WScript.Shell
+        $Shortcut = $WshShell.CreateShortcut("${env:APPDATA}\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\GPG Agent.lnk")
+        $Shortcut.TargetPath = "C:\\Program Files (x86)\\gnupg\\bin\\gpg-connect-agent.exe"
+        $Shortcut.Arguments = "/bye"
+        $Shortcut.WorkingDirectory = "C:\\Program Files (x86)\\gnupg\\bin"
+        $Shortcut.Save()
+  # PSDscResources/Environment can not write to user variables
+  - resource: PSDscResources/Registry
+    directives:
+      description: "Disable Jenkins HA"
+    settings:
+      Key: "HKEY_CURRENT_USER\\Environment"
+      ValueName: "JENKINS_HA"
+      ValueType: String
+      ValueData: "false"
+      Ensure: present
+      Force: true
+  - resource: PSDscResources/Script
+    id: toolsDir
+    directives:
+      description: create tools dir
+    settings:
+      # script is idempotent - just run it
+      GetScript: |
+        return
+      TestScript: |
+        return Test-Path C:\tools -PathType Container
+      SetScript: |
+        New-Item -Path c:\ -Name tools -ItemType directory
+  - resource: xDSCDownloadFile/xDSCDownloadFile
+    id: opscore 
+    directives:
+      description: download opscore
+      allowPrerelease: true
+    dependsOn:
+      - toolsDir
+    settings: 
+      Url: https://s3.amazonaws.com/cloudbees-opscore/releases/stable/windows/amd64/opscore.exe
+      Destination: c:\tools\opscore.exe
+      Ensure: Present
+  - resource: PSDscResources/Script
+    id: yubikey conf
+    directives:
+      description: link gpg and yubikey
+    dependsOn: 
+      - gpgagentconfig
+    settings:
+      GetScript: |
+        return
+      TestScript: |
+        $output = gpg --list-keys
+        if ($output -Match "jnord@cloudbees.com") {
+          return $True
+        }
+        return $False
+      SetScript: |
+        gpg --import ${WinGetConfigRoot}\files\pub.key
+        # gpg --edit-key FE40B89B0C574BAD trust
+        # XXX this needs to be done manually
+        return $True
+        
+      

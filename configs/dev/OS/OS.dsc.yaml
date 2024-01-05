@@ -61,6 +61,8 @@ properties:
     settings:
       id: Git.Git
       source: winget
+      InstallMode: Interactive
+      # ensue we choose sane defaults until the things are exposed (do not install a version of ssh that can not work with gpg-agent etc..)
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: hub
     directives:
