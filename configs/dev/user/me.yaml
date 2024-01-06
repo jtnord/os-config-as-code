@@ -65,6 +65,19 @@ properties:
 #      id:  Cygwin.Cygwin
 #      source: winget
 
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: ubuntu
+    directives:
+      description: Install Ubuntu WSL
+      allowPrerelease: true
+    settings:
+      id: "9PDXGNCFSCZV" #https://apps.microsoft.com/detail/9PDXGNCFSCZV?hl=en-gb&gl=US
+      source: msstore 
+# wsl is installed by the admin as we can not enable the features here...
+#    dependsOn:
+#      - "wsl"
+
+
 # find and set all tweaks I do here.
 # registry keys can be set by e.g. https://github.com/microsoft/winget-cli/discussions/3408#discussioncomment-6387258
 # also install any apps.

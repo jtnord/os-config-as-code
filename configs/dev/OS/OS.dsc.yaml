@@ -106,17 +106,6 @@ properties:
       id: Yubico.YubikeyManager
       source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
-    id: ubuntu
-    directives:
-      description: Install Ubuntu WSL
-      allowPrerelease: true
-    settings:
-      id: Canonical.Ubuntu.2204
-      source: winget
-# https://github.com/microsoft/winget-cli/issues/3348
-#    dependsOn:
-#      - "wsl"
-  - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: docker
     directives:
       description: Install Docker DockerDesktop
@@ -124,8 +113,10 @@ properties:
     settings:
       id: Docker.DockerDesktop
       source: winget
-    dependsOn:
-      - "ubuntu"
+# https://github.com/microsoft/winget-cli/issues/3348
+#    dependsOn:
+#      - "wsl"
+
   # TODO create c:\java
   # TODO install openjdk11,17,21 maven 3.9
 #      
