@@ -5,3 +5,10 @@
 # OpenVPN 
 #   config 
 #   create "OpenVPN Administrators" group for local user
+
+# set the theme
+# create the virtual desktops (set wallpaper)
+
+# disable some cruft (onedrive)
+
+# set power config
