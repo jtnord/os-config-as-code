@@ -33,4 +33,8 @@ properties:
       id: Google.Chrome
       source: winget
 
-
+## TODO powerplan
+# screensaver / lock timout
+# regional settings
+# keyboard..
+# system locale?
