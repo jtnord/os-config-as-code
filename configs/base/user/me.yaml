@@ -47,14 +47,26 @@ properties:
       id: Microsoft.VisualStudioCode
       source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
-    id: leafystructure
+    id: shapesOfLeavesTheme
     directives:
-      description: Install Leafy Structures theme
+      description: Install Shapes of Leaves Theme
       allowPrerelease: true
     settings:
-      id: "9NZPM0HLNWZL"
+      id: "9P6NHGS0NCCH"
       source: msstore
-      
+  - resource: PSDscResources/Registry
+    # requires the user logs out
+    directives:
+      description: Wallpapaper
+    dependsOn:
+      - shapesOfLeavesTheme
+    settings:
+      Key: 'HKEY_CURRENT_USER\Control Panel\Desktop'
+      ValueName: 'Wallpaper'
+      ValueType: String
+      ValueData: 'C:\Users\jnord\AppData\Local\Microsoft\Windows\Themes\Shapes of\DesktopBackground\01_gettyimages-184350653_super_resized.jpg'
+      Ensure: Present
+      Force: true      
 # config files for clink...
 # cygwin?
 # terminal config?

@@ -9,6 +9,8 @@
 # set the theme
 # create the virtual desktops (set wallpaper)
 
+# install nerd fonts (DejaVu Sans Mono)
+
 # disable some cruft (onedrive)
 
 # set power config

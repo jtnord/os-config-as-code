@@ -132,5 +132,19 @@ properties:
         # gpg --edit-key FE40B89B0C574BAD trust
         # XXX this needs to be done manually
         return $True
-        
+# Virtual Desktops (requires user to log out)
+# using registry until https://github.com/MScholtes/PSVirtualDesktop/issues
+  - resource: PSDscResources/Registry
+    directives:
+      description: [Virtual Desktop] Mail and Calendar
+    dependsOn:
+      - shapesOfLeavesTheme
+    settings:
+      Key: 'HKEY_CURRENT_USER\Control Panel\Desktop'
+      ValueName: 'Wallpaper'
+      ValueType: String
+      ValueData: 'C:\Users\jnord\AppData\Local\Microsoft\Windows\Themes\Shapes of\DesktopBackground\01_gettyimages-184350653_super_resized.jpg'
+      Ensure: Present
+      Force: true      
+
       
