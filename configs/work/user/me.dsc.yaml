@@ -18,6 +18,14 @@ properties:
       id: SlackTechnologies.Slack
       source: winget
   - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: intelliJU
+    directives:
+      description: Install IntelliJ Ultimate
+      allowPrerelease: true
+    settings:
+      id: JetBrains.IntelliJIDEA.Ultimate
+      source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: outlook
     directives:
       description: Install Outlook for Windows
@@ -134,17 +142,4 @@ properties:
         return $True
 # Virtual Desktops (requires user to log out)
 # using registry until https://github.com/MScholtes/PSVirtualDesktop/issues
-  - resource: PSDscResources/Registry
-    directives:
-      description: [Virtual Desktop] Mail and Calendar
-    dependsOn:
-      - shapesOfLeavesTheme
-    settings:
-      Key: 'HKEY_CURRENT_USER\Control Panel\Desktop'
-      ValueName: 'Wallpaper'
-      ValueType: String
-      ValueData: 'C:\Users\jnord\AppData\Local\Microsoft\Windows\Themes\Shapes of\DesktopBackground\01_gettyimages-184350653_super_resized.jpg'
-      Ensure: Present
-      Force: true      
-
       
