@@ -14,3 +14,23 @@
 # disable some cruft (onedrive)
 
 # set power config
+
+# full sysinternals suite (c:\tools)
+
+# opscore secret patterns
+  git pattern override
+ secrets.providers=powershell cat c:\\users\\jnord\\.opscore\\secret-patterns\\git-secrets\\*.txt
+
+# add c:\tools to path
+(maven / jdk scrips)
+
+# JDKs
+
+# Maven
+(maven config)
+
+# Eclipse
+
+# Intellij
+
+# clink configuration

@@ -55,7 +55,7 @@ properties:
         # gh auth setup-git
         git config --global credential.https://github.com.helper "!'C:\Program Files\GitHub CLI\gh.exe' auth git-credential"
         git config --global credential.https://gist.github.com.helper "!'C:\Program Files\GitHub CLI\gh.exe' auth git-credential"
-# https://github.com/microsoft/winget-pkgs/issues/132720
+# https://github.com/microsoft/winget-pkgs/issues/133260
 #  - resource: Microsoft.WinGet.DSC/WinGetPackage
 #    id: cygwin
 #    directives:
@@ -76,18 +76,3 @@ properties:
 # wsl is installed by the admin as we can not enable the features here...
 #    dependsOn:
 #      - "wsl"
-
-# Default Wallpaper (requires user to logout)
-  - resource: PSDscResources/Registry
-    # requires the user logs out
-    directives:
-      description: Wallpapaper
-    dependsOn:
-      - shapesOfLeavesTheme
-    settings:
-      Key: 'HKEY_CURRENT_USER\Control Panel\Desktop'
-      ValueName: 'Wallpaper'
-      ValueType: String
-      ValueData: 'C:\Users\jnord\AppData\Local\Microsoft\Windows\Themes\Shapes of\DesktopBackground\01_gettyimages-184350653_super_resized.jpg'
-      Ensure: Present
-      Force: true      
