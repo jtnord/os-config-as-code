@@ -39,15 +39,6 @@ properties:
     settings:
       id: Google.Chrome
       source: winget
-  - resource: Microsoft.WinGet.DSC/WinGetPackage
-    # installed for all users as it is a per user install :-/
-    id: notepad2
-    directives:
-      description: Install Notepad2
-      allowPrerelease: true
-    settings:
-      id: zufuliu.notepad2
-
 ## TODO powerplan
 # screensaver / lock timout
 # regional settings

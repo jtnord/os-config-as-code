@@ -111,3 +111,11 @@ properties:
         ValueData: 'C:\Windows\system32\scrnsave.scr' # blank
         Ensure: Present
         Force: true
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      # installed for all users as it is a per user install :-/
+      id: notepad2
+      directives:
+        description: Install Notepad2
+        allowPrerelease: true
+      settings:
+        id: zufuliu.notepad2
