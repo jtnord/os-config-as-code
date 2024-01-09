@@ -64,7 +64,6 @@ properties:
 #    settings:
 #      id:  Cygwin.Cygwin
 #      source: winget
-
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: ubuntu
     directives:
