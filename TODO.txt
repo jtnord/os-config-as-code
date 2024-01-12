@@ -14,6 +14,8 @@
 # disable some cruft (onedrive)
 
 # set power config
+ - power plan
+ - enable hibernation
 
 # full sysinternals suite (c:\tools)
 
