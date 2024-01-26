@@ -21,7 +21,7 @@
 
 # opscore secret patterns
   git pattern override
- secrets.providers=powershell cat c:\\users\\jnord\\.opscore\\secret-patterns\\git-secrets\\*.txt
+ secrets.providers=powershell cat c:\\users\\jnord\\.opscore\\secrets-patterns\\git-secrets\\*.txt
 
 # add c:\tools to path
 (maven / jdk scrips)
