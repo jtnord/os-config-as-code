@@ -77,3 +77,11 @@ properties:
 # wsl is installed by the admin as we can not enable the features here...
 #    dependsOn:
 #      - "wsl"
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: kind
+    directives:
+      description: Install KinD
+      allowPrerelease: true
+    settings:
+      id: Kubernetes.kind
+      source: winget
