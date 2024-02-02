@@ -151,3 +151,11 @@ properties:
 # Virtual Desktops (requires user to log out)
 # using registry until https://github.com/MScholtes/PSVirtualDesktop/issues
       
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: PowerToys
+    directives:
+      description: Install PowerToys
+      allowPrerelease: true
+    settings:
+      id:  XP89DCGQ3K6VLD
+      source: msstore
