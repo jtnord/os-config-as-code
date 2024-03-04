@@ -36,3 +36,8 @@
 # Intellij
 
 # clink configuration
+
+# Symbolic links support
+Create local group for ability to create symbolic links
+grant group ability to create links
+Add myself to it :)
