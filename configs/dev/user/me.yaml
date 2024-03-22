@@ -85,3 +85,12 @@ properties:
     settings:
       id: Kubernetes.kind
       source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: k3d
+    directives:
+      description: Install k3d
+      allowPrerelease: true
+    settings:
+      id: k3d.k3d
+      source: winget
+      

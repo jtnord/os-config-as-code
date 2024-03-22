@@ -159,3 +159,12 @@ properties:
     settings:
       id:  XP89DCGQ3K6VLD
       source: msstore
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: WireShark
+    directives:
+      description: Install WireShark
+      allowPrerelease: true
+    settings:
+      id:   WiresharkFoundation.Wireshark
+      source: winget
+# TODO npcap install source wireshark works (winget-pkgs has agent very old version)
