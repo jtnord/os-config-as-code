@@ -168,3 +168,13 @@ properties:
       id:   WiresharkFoundation.Wireshark
       source: winget
 # TODO npcap install source wireshark works (winget-pkgs has agent very old version)
+
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: Google.CloudSDK
+    directives:
+      description: Install Google Cloud SDK
+      allowPrerelease: true
+    settings:
+      id: Google.CloudSDK
+      source: winget
+
