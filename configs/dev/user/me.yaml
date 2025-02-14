@@ -17,7 +17,7 @@ properties:
     settings:
       id: Git.Git
       source: winget
-      InstallMode: Interactive 
+      InstallMode: Interactive
       # ensue we choose sane defaults until the things are exposed (do not install a version of ssh that can not work with gpg-agent etc..)
   - resource: Microsoft.WinGet.DSC/WinGetPackage
     id: github
@@ -34,8 +34,8 @@ properties:
     directives:
       description: create git config
       allowPrerelease: false
-      dependsOn:
-        - git
+    dependsOn:
+        - "git"
     settings:
       # script is idempotent - just run it
       GetScript: |

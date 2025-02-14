@@ -178,3 +178,20 @@ properties:
       id: Google.CloudSDK
       source: winget
 
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: uvncbvba.UltraVnc
+    directives:
+      description: Install UltraVnc
+      allowPrerelease: true
+    settings:
+      id: uvncbvba.UltraVnc
+      source: winget
+
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: tailscale.tailscale
+    directives:
+      description: Install Tailscale
+      allowPrerelease: true
+    settings:
+      id: tailscale.tailscale
+      source: winget

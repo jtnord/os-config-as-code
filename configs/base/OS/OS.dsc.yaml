@@ -39,6 +39,16 @@ properties:
     settings:
       id: Google.Chrome
       source: winget
+  - resource: PSDscResources/Registry
+    directives:
+      description: "Enable long file support"
+    settings:
+      Key: "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\FileSystem"
+      ValueName: "LongPathsEnabled"
+      ValueType: DWord
+      ValueData: "1"
+      Ensure: present
+      Force: true
 ## TODO powerplan
 # screensaver / lock timout
 # regional settings
