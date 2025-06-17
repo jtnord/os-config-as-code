@@ -93,4 +93,12 @@ properties:
     settings:
       id: k3d.k3d
       source: winget
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    id: ripgrep
+    directives:
+      description: Install ripgrep
+      allowPrerelease: true
+    settings:
+      id: BurntSushi.ripgrep.MSVC
+      source: winget
       
